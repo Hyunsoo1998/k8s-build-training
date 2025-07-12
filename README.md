@@ -1,6 +1,8 @@
 # 🚀 k8s-build-training
 
-Ansible을 이용한 Kubernetes 클러스터 구축 및 학습을 위한 기록용 레포지토리입니다.  
+Ansible을 이용한 Kubernetes 클러스터 구축 및 학습을 위한 기록용 레포지토리입니다.
+<br>
+추후 서비스를 구축 할 예정입니다. <br>
 각 Node의 리소스 및 설정은 상황에 따라 달라질 수 있습니다.
 
 ---
