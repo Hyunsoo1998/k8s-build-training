@@ -161,8 +161,49 @@ k8s_require_install.yml
 
 ---
 
+현재 /etc/fstab에 iso를 mnt로 등록하지 않은 상태입니다.
+<img width="1100" height="800" alt="automount 1" src="https://github.com/user-attachments/assets/5c2896a7-12ab-469d-b5f4-f5b5f289c7d6" />
+
+
+
+<br>
+playbook을 이용하여, 모든 Node에 대해서 한번에 iso를 /mnt로 mount를 진행하겠습니다.
+
+<br>
+<br>
+mount-auto.yml
+
+```yml
+
+---
+- name: mount auto iso
+  hosts: all
+  become: yes
+  tasks:
+    - name: mount ISO to /mnt
+      mount:
+        path: /mnt
+        src: /dev/sr0
+        fstype: iso9660
+        opts: loop
+        state: mounted
+
+```
+
+
+
+<br>
+
+playbook 실행 결과
+
+<img width="1100" height="800" alt="automoun3" src="https://github.com/user-attachments/assets/6ab0e802-d428-47d4-9a4e-88c8cf7c0b90" />
+<br>
+<img width="1100" height="800" alt="automount4" src="https://github.com/user-attachments/assets/eba4c18f-67a0-4a6b-996f-df321ad3e0f2" />
+
+
+
 ✅ 실행 결과 <br>
-모든 Node에 Kubernetes 필수 패키지 설치 완료
+모든 Node에 (kubelet,kubeadm,kubectl) 설치 완료
 
 다음 단계에서 kubeadm init을 통해 클러스터 구성 예정
 
